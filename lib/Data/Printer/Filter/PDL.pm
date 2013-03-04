@@ -102,11 +102,16 @@ Data::Printer::Filter::PDL - Filter for L<Data::Printer> that handles L<PDL> dat
     __END__
      
     PDL {
-        Type : double
-        Shape : [10 10]
-        Min : 0
-        Max : 99
-        Bad : No
+        Data     : [
+                    [0 1]
+                    [2 3]
+                   ]
+        Type     : double
+        Shape    : [2 2]
+        Nelem    : 4
+        Min      : 0
+        Max      : 3
+        Badflag  : No
         Has Bads : No
     }
 
