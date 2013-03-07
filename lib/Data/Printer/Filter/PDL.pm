@@ -134,6 +134,17 @@ You will want to configure L<Data::Printer> to use this module by creating a
         }
     };
 
+If you are using this module with the plugin
+L<Devel::REPL::Plugin::DataPrinter>, you may want to add the following to your
+C<repl.rc> or C<.perldlrc> so that L<PDL::Char> data is displayed correctly in
+L<Devel::REPL>:
+
+    $_REPL->dataprinter_config({
+        stringify => {
+            'PDL::Char' => 0,
+        },
+    });
+
 =head1 BUGS
 
 Report bugs and submit patches to the repository on L<GitHub|https://github.com/zmughal/Data-Printer-Filter-PDL>.
