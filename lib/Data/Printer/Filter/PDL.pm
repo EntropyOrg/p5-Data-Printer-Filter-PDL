@@ -8,6 +8,7 @@ use Term::ANSIColor;
 
 filter 'PDL', \&pdl_filter;
 filter 'PDL::Char', \&pdl_filter;
+filter 'PDL::Complex', \&pdl_filter;
 
 sub pdl_filter {
   my ($self, $props) = @_;
@@ -136,12 +137,13 @@ You will want to configure L<Data::Printer> to use this module by creating a
 
 If you are using this module with the plugin
 L<Devel::REPL::Plugin::DataPrinter>, you may want to add the following to your
-C<repl.rc> or C<.perldlrc> so that L<PDL::Char> data is displayed correctly in
-L<Devel::REPL>:
+C<repl.rc> or C<.perldlrc> so that L<PDL> subclass data is displayed correctly
+in L<Devel::REPL>:
 
     $_REPL->dataprinter_config({
         stringify => {
             'PDL::Char' => 0,
+            'PDL::Complex' => 0,
         },
     });
 
