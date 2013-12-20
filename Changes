@@ -1,0 +1,13 @@
+0.004 2013-03-11 06:14:29-0500
+  - add PDL::Complex to list of filtered classes
+
+0.003 2013-03-07 00:43:47-0600
+  - added docs on using the 'stringify' option on PDL::Char for
+    Devel::REPL::Plugin::DataPrinter
+
+0.002 2013-03-05 21:45:28-0600
+  - fix tests by loading the filter at Data::Printer load time
+
+0.001 2013-03-04 01:13:26-0600
+  - initial upload
+  - adds color to Joel Berger's Gist <https://gist.github.com/jberger/2990606>
