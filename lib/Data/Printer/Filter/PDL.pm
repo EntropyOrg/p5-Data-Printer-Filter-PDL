@@ -130,7 +130,7 @@ the contents of a L<PDL> variable.
 =head1 CONFIGURATION
 
 Modify L<C<$PDL::toolongtoprint>|PDL::Core/PDL::toolongtoprint> to control
-when the contents of piddles with many elements are displayed..
+when the contents of piddles with many elements are displayed.
 
 =head1 EXAMPLES
 
