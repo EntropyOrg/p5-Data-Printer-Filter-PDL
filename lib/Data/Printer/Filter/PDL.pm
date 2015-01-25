@@ -1,5 +1,5 @@
 package Data::Printer::Filter::PDL;
-$Data::Printer::Filter::PDL::VERSION = '0.005';
+$Data::Printer::Filter::PDL::VERSION = '0.006';
 use strict;
 use warnings;
 
@@ -58,16 +58,16 @@ sub pdl_filter {
   my $max_tag_length = List::Util::max map { length $_->[0] } @data;
   my $tag_format = ' ' x $indent . '%-' . $max_tag_length . 's : ';
   (my $empty_tag = sprintf($tag_format, "")) =~ s,:, ,;
-  my @formatted = 
+  my @formatted =
     map {
-      $_->[1] =~ s,\n,\n$empty_tag,gs;
+      $_->[1] =~ s,\n,@{[newline()]}$empty_tag,gs;
       sprintf($tag_format, $_->[0]) . $_->[1]
     }
     @data;
 
-  my $data = ref($self) . " {\n";
-  $data .= join "\n", @formatted;
-  $data .= "\n}";
+  my $data = ref($self) . " {" . newline();
+  $data .= join newline(), @formatted;
+  $data .= newline()."}";
 
   return $data;
 };
@@ -81,31 +81,44 @@ sub color_pdl_string {
 }
 
 sub color_bad_bool {
-	my ($props, $bool) = @_;
-	return $bool ? opt_colored($props, ['red'],"Yes") : opt_colored($props, ['green'],"No");
+  my ($props, $bool) = @_;
+  return $bool ? opt_colored($props, ['red'],"Yes") : opt_colored($props, ['green'],"No");
 }
 
 sub opt_colored {
-	my $props = shift;
-	my ($color, $string) = @_;
-	return $string unless $props->{colored};
-	colored(@_);
+  my $props = shift;
+  my ($color, $string) = @_;
+  return $string unless $props->{colored};
+  colored(@_);
 }
+
+
+1;
+
+__END__
+
+=pod
+
+=encoding UTF-8
 
 =head1 NAME
 
-Data::Printer::Filter::PDL - Filter for L<Data::Printer> that handles L<PDL> data.
+Data::Printer::Filter::PDL
+
+=head1 VERSION
+
+version 0.006
 
 =head1 SYNOPSIS
 
     use PDL;
     use Data::Printer;
-     
+
     my $pdl = sequence(10,10);
     p $pdl;
-     
+
     __END__
-     
+
     PDL {
         Data     : [
                     [0 1]
@@ -120,17 +133,19 @@ Data::Printer::Filter::PDL - Filter for L<Data::Printer> that handles L<PDL> dat
         Has Bads : No
     }
 
-
-
 =head1 DESCRIPTION
 
 This module provides formatting for L<PDL> data that can be used to quickly see
 the contents of a L<PDL> variable.
 
+=head1 NAME
+
+Data::Printer::Filter::PDL - Filter for L<Data::Printer> that handles L<PDL> data.
+
 =head1 CONFIGURATION
 
 Modify L<C<$PDL::toolongtoprint>|PDL::Core/PDL::toolongtoprint> to control
-when the contents of piddles with many elements are displayed..
+when the contents of piddles with many elements are displayed.
 
 =head1 EXAMPLES
 
@@ -160,7 +175,7 @@ in L<Devel::REPL>:
 
 Report bugs and submit patches to the repository on L<GitHub|https://github.com/zmughal/Data-Printer-Filter-PDL>.
 
-=head1 SEE ALSO 
+=head1 SEE ALSO
 
 L<Data::Printer>, L<PDL>, L<Devel::REPL::Plugin::DataPrinter>
 
@@ -176,6 +191,15 @@ modify it under the terms of the Artistic License version 2.0.
 Thanks to Joel Berger for the L<original code|https://gist.github.com/2990606>
 that this was based upon.
 
-=cut
+=head1 AUTHOR
 
-1;
+Zakariyya Mughal <zmughal@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2013 by Zakariyya Mughal.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
