@@ -1,0 +1,106 @@
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+Data::Printer::Filter::PDL
+
+=head1 VERSION
+
+version 0.006
+
+=head1 SYNOPSIS
+
+    use PDL;
+    use Data::Printer;
+
+    my $pdl = sequence(10,10);
+    p $pdl;
+
+    __END__
+
+    PDL {
+        Data     : [
+                    [0 1]
+                    [2 3]
+                   ]
+        Type     : double
+        Shape    : [2 2]
+        Nelem    : 4
+        Min      : 0
+        Max      : 3
+        Badflag  : No
+        Has Bads : No
+    }
+
+=head1 DESCRIPTION
+
+This module provides formatting for L<PDL> data that can be used to quickly see
+the contents of a L<PDL> variable.
+
+=head1 NAME
+
+Data::Printer::Filter::PDL - Filter for L<Data::Printer> that handles L<PDL> data.
+
+=head1 CONFIGURATION
+
+Modify L<C<$PDL::toolongtoprint>|PDL::Core/PDL::toolongtoprint> to control
+when the contents of piddles with many elements are displayed.
+
+=head1 EXAMPLES
+
+You will want to configure L<Data::Printer> to use this module by creating a
+.dataprinter file in your $HOME directory:
+
+    {
+        colored => 1,
+        filters => {
+          -external => [ 'PDL' ],
+        }
+    };
+
+If you are using this module with the plugin
+L<Devel::REPL::Plugin::DataPrinter>, you may want to add the following to your
+C<repl.rc> or C<.perldlrc> so that L<PDL> subclass data is displayed correctly
+in L<Devel::REPL>:
+
+    $_REPL->dataprinter_config({
+        stringify => {
+            'PDL::Char' => 0,
+            'PDL::Complex' => 0,
+        },
+    });
+
+=head1 BUGS
+
+Report bugs and submit patches to the repository on L<GitHub|https://github.com/zmughal/Data-Printer-Filter-PDL>.
+
+=head1 SEE ALSO
+
+L<Data::Printer>, L<PDL>, L<Devel::REPL::Plugin::DataPrinter>
+
+=head1 COPYRIGHT
+
+Copyright 2013 Zakariyya Mughal.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the Artistic License version 2.0.
+
+=head1 ACKNOWLEDGMENTS
+
+Thanks to Joel Berger for the L<original code|https://gist.github.com/2990606>
+that this was based upon.
+
+=head1 AUTHOR
+
+Zakariyya Mughal <zmughal@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2013 by Zakariyya Mughal.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
