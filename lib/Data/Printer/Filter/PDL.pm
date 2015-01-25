@@ -60,14 +60,14 @@ sub pdl_filter {
   (my $empty_tag = sprintf($tag_format, "")) =~ s,:, ,;
   my @formatted = 
     map {
-      $_->[1] =~ s,\n,\n$empty_tag,gs;
+      $_->[1] =~ s,\n,@{[newline()]}$empty_tag,gs;
       sprintf($tag_format, $_->[0]) . $_->[1]
     }
     @data;
 
-  my $data = ref($self) . " {\n";
-  $data .= join "\n", @formatted;
-  $data .= "\n}";
+  my $data = ref($self) . " {" . newline();
+  $data .= join newline(), @formatted;
+  $data .= newline()."}";
 
   return $data;
 };
