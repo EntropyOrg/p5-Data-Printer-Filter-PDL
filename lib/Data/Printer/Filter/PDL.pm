@@ -58,7 +58,7 @@ sub pdl_filter {
   my $max_tag_length = List::Util::max map { length $_->[0] } @data;
   my $tag_format = ' ' x $indent . '%-' . $max_tag_length . 's : ';
   (my $empty_tag = sprintf($tag_format, "")) =~ s,:, ,;
-  my @formatted = 
+  my @formatted =
     map {
       $_->[1] =~ s,\n,@{[newline()]}$empty_tag,gs;
       sprintf($tag_format, $_->[0]) . $_->[1]
@@ -81,15 +81,15 @@ sub color_pdl_string {
 }
 
 sub color_bad_bool {
-	my ($props, $bool) = @_;
-	return $bool ? opt_colored($props, ['red'],"Yes") : opt_colored($props, ['green'],"No");
+  my ($props, $bool) = @_;
+  return $bool ? opt_colored($props, ['red'],"Yes") : opt_colored($props, ['green'],"No");
 }
 
 sub opt_colored {
-	my $props = shift;
-	my ($color, $string) = @_;
-	return $string unless $props->{colored};
-	colored(@_);
+  my $props = shift;
+  my ($color, $string) = @_;
+  return $string unless $props->{colored};
+  colored(@_);
 }
 
 =head1 NAME
@@ -100,12 +100,12 @@ Data::Printer::Filter::PDL - Filter for L<Data::Printer> that handles L<PDL> dat
 
     use PDL;
     use Data::Printer;
-     
+
     my $pdl = sequence(10,10);
     p $pdl;
-     
+
     __END__
-     
+
     PDL {
         Data     : [
                     [0 1]
@@ -160,7 +160,7 @@ in L<Devel::REPL>:
 
 Report bugs and submit patches to the repository on L<GitHub|https://github.com/zmughal/Data-Printer-Filter-PDL>.
 
-=head1 SEE ALSO 
+=head1 SEE ALSO
 
 L<Data::Printer>, L<PDL>, L<Devel::REPL::Plugin::DataPrinter>
 
