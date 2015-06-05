@@ -1,3 +1,8 @@
+0.007 2015-06-05 11:19:29-0500
+  - fix test: p() needs to have the return_value => 'dump' option when used
+    with Data::Printer 0.36. Thanks to Slaven Rezic (SREZIC++) for the bug report.
+    Closes RT#104975 <https://rt.cpan.org/Ticket/Display.html?id=104975>.
+
 0.006 2015-01-24 19:53:10-0600
   - fix the indentation when in multi-level data structures by using newline()
     from Data::Printer instead of using "\n" directly

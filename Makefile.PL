@@ -21,6 +21,7 @@ my %WriteMakefileArgs = (
   "MIN_PERL_VERSION" => "5.006",
   "NAME" => "Data::Printer::Filter::PDL",
   "PREREQ_PM" => {
+    "Data::Printer" => "0.36",
     "Data::Printer::Filter" => 0,
     "Term::ANSIColor" => 0,
     "constant" => 0,
@@ -28,11 +29,11 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
-    "Data::Printer" => 0,
+    "Data::Printer" => "0.36",
     "PDL" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "0.006",
+  "VERSION" => "0.007",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -40,7 +41,7 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "Data::Printer" => 0,
+  "Data::Printer" => "0.36",
   "Data::Printer::Filter" => 0,
   "ExtUtils::MakeMaker" => 0,
   "PDL" => 0,
