@@ -16,7 +16,7 @@ if ( eval { use Data::Printer {
 use_ok('Data::Printer::Filter::PDL');
 
 my $pdl = sequence(10,10);
-my $ddp = p $pdl,;
+my $ddp = p $pdl, return_value => 'dump';
 
 like( $ddp, qr/PDL/,                 "contains the class name PDL" );
 like( $ddp, qr/Type\s+: double/,     "displays type"               );
@@ -27,6 +27,6 @@ like( $ddp, qr/Badflag\s+: No/,          "displays badflag status"     );
 
 {
   local $PDL::toolongtoprint = $pdl->nelem - 1;
-  my $long_ddp = p $pdl,;
+  my $long_ddp = p $pdl, return_value => 'dump';
   ok( length $ddp > length $long_ddp, 'does not print PDL after setting $PDL::toolongtoprint');
 }
