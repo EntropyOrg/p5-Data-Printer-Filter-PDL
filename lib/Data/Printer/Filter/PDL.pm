@@ -158,7 +158,7 @@ in L<Devel::REPL>:
 
 =head1 BUGS
 
-Report bugs and submit patches to the repository on L<GitHub|https://github.com/zmughal/Data-Printer-Filter-PDL>.
+Report bugs and submit patches to the repository on L<GitHub|https://github.com/EntropyOrg/p5-Data-Printer-Filter-PDL>.
 
 =head1 SEE ALSO
 
