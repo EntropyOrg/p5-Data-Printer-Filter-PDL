@@ -132,7 +132,7 @@ Data::Printer::Filter::PDL - Filter for L<Data::Printer> that handles L<PDL> dat
     use PDL;
     use Data::Printer;
 
-    my $pdl = sequence(10,10);
+    my $pdl = sequence(2,2);
     p $pdl;
 
     __END__
@@ -166,14 +166,9 @@ when the contents of piddles with many elements are displayed.
 =head1 EXAMPLES
 
 You will want to configure L<Data::Printer> to use this module by creating a
-.dataprinter file in your $HOME directory:
+C<.dataprinter> file in your $HOME directory:
 
-    {
-        colored => 1,
-        filters => {
-          -external => [ 'PDL' ],
-        }
-    };
+    filters = PDL
 
 If you are using this module with the plugin
 L<Devel::REPL::Plugin::DataPrinter>, you may want to add the following to your
@@ -182,7 +177,8 @@ in L<Devel::REPL>:
 
     $_REPL->dataprinter_config({
         stringify => {
-            'PDL::Char' => 0,
+            'PDL'          => 0,
+            'PDL::Char'    => 0,
             'PDL::Complex' => 0,
         },
     });
