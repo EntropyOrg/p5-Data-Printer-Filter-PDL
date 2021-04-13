@@ -34,7 +34,7 @@ use constant COLORS => {
 # _get_color_pair
 sub _gcp {
   my ($ddp, $name) = @_;
-  my $color_spec = %{ COLORS() }{$name};
+  my $color_spec = COLORS()->{$name};
   my $default_color = $color_spec->{color};
   if( exists $color_spec->{fallback} && ( my $fallback_color = $ddp->theme->color_for($color_spec->{fallback}) ) ) {
     $default_color = $fallback_color;
