@@ -74,7 +74,7 @@ Report bugs and submit patches to the repository on L<GitHub|https://github.com/
 
 =head1 SEE ALSO
 
-L<Data::Printer>, L<PDL>, L<Devel::REPL::Plugin::DataPrinter>
+L<Data::Printer>, L<PDL>, L<Reply::Plugin::DataPrinter>, L<Devel::REPL::Plugin::DataPrinter>
 
 =head1 COPYRIGHT
 
