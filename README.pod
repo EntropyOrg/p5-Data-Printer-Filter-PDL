@@ -8,7 +8,7 @@ Data::Printer::Filter::PDL
 
 =head1 VERSION
 
-version 1.000_001
+version 1.001
 
 =head1 SYNOPSIS
 
