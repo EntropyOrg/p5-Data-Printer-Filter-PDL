@@ -1,7 +1,5 @@
 package Data::Printer::Filter::PDL;
-$Data::Printer::Filter::PDL::VERSION = '1.000_001'; # TRIAL
-
-$Data::Printer::Filter::PDL::VERSION = '1.000001';
+$Data::Printer::Filter::PDL::VERSION = '1.001';
 use strict;
 use warnings;
 
@@ -140,7 +138,7 @@ Data::Printer::Filter::PDL
 
 =head1 VERSION
 
-version 1.000_001
+version 1.001
 
 =head1 SYNOPSIS
 
